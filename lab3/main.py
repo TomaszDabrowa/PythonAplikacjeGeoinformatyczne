@@ -5,8 +5,8 @@ from personnel import *
 
 def run_application():
     # zdefiniowanie naszych zasobów
-    ambulance1 = Ambulance(1, "Type A", "available", (50.095340, 18.920282), ["Defibrillator", "Oxygen tank"])
-    ambulance2 = Ambulance(2, "Type B", "on mission", (50.095340, 19.920282), ["Stretcher", "First Aid Kit"])
+    ambulance1 = Ambulance("Type A", "available", (50.095340, 18.920282), ["Defibrillator", "Oxygen tank"])
+    ambulance2 = Ambulance("Type B", "on mission", (50.095340, 19.920282), ["Stretcher", "First Aid Kit"])
 
     employee1 = Employee("John", "Doe", 123, 12000.0)
     employee2 = Employee("Jane", "Smith", 124, 8000.0)
@@ -24,8 +24,8 @@ def run_application():
     queue = IncidentQueue()
 
     # zaraportowanie 2 zgłoszeń
-    incident1 = Incident(1, "Power outage in sector 4")
-    incident2 = Incident(2, "Fire alarm in building 21")
+    incident1 = Incident(1, "Power outage in sector 4", 1, "12:30", "Tomasz Dąbrowa")
+    incident2 = Incident(2, "Fire alarm in building 21", 2, "13:30", "Hugon Kołłątaj")
     queue += incident1
     queue += incident2
 
@@ -37,6 +37,8 @@ def run_application():
     print(f"Przed podwyżką: {driver1.display_info()}")
     driver1.update_salary(5000.12)
     print(f"Po podwyżce: {driver1.display_info()}")
+    print(ambulance1)
+    print(incident1)
 
 
 if __name__ == "__main__":
