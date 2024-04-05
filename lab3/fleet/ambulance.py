@@ -1,4 +1,6 @@
 # V1 - slajd 8
+import math
+
 class Ambulance:
     __slots__ = ['id', 'vehicle_type', 'status', 'location', 'medical_equipment']
     __instances_count = 0
@@ -34,6 +36,22 @@ class Ambulance:
     @classmethod
     def get_instances_count(cls):
         return f"Number of working ambulances: {cls.__instances_count}"
+    
+    def checkStatus(self, incidentLocation, stationLocation):
+        if self.location == incidentLocation:
+            tmp = "on site"
+        elif self.location == stationLocation:
+            tmp = "in station"
+        else:
+            tmp = "in route"
+        return tmp
+    
+    def calculateRoute(self, incidentLocation):
+        dx = abs(incidentLocation[0] - self.location[0])
+        dy = abs(incidentLocation[1] - self.location[1])
+        distance = math.sqrt(dx**2 + dy**2)
+        return round(distance, 2)
+    
 
 if __name__ == "__main__":
     ambulance1 = Ambulance(

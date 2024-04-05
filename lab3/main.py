@@ -1,3 +1,4 @@
+import time as czas
 from fleet.ambulance import Ambulance
 from operations import *
 from personnel import *
@@ -25,8 +26,8 @@ def run_application():
     queue = IncidentQueue()
 
     # zaraportowanie 2 zgłoszeń
-    incident1 = Incident(1, "Power outage in sector 4", 1, "12:30", "Tomasz Dąbrowa")
-    incident2 = Incident(2, "Fire alarm in building 21", 2, "13:30", "Hugon Kołłątaj")
+    incident1 = Incident(1, "Power outage in sector 4", 1, "12:30", "Tomasz Dąbrowa", (50.32424, 47.45245))
+    incident2 = Incident(2, "Fire alarm in building 21", 2, "13:30", "Hugon Kołłątaj", (50.56365, 47.45435))
     queue += incident1
     queue += incident2
 
@@ -44,6 +45,15 @@ def run_application():
     station1 = Station(1, "Bytom", ambulance1, driver1, employee1)
     station2 = Station(2, "Chorzów", ambulance2, driver2, employee2)
     station1.check_location(ambulance1.location)
+
+    # ZADANIE 4
+    incident1.showPriority()
+    #czas.sleep(2)
+    incident1.durationTime()
+
+    print(f"Status karetki: {ambulance1.checkStatus(incident1.location, station1.location)}")
+
+    print(f"Distance to incident place: {ambulance1.calculateRoute(incident1.location)} km")
 
 
 if __name__ == "__main__":
