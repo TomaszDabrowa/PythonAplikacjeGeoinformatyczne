@@ -1,6 +1,7 @@
 from fleet.ambulance import Ambulance
 from operations import *
 from personnel import *
+from fleet.station import Station
 
 
 def run_application():
@@ -39,6 +40,10 @@ def run_application():
     print(f"Po podwyżce: {driver1.display_info()}")
     print(ambulance1)
     print(incident1)
+    # ZADANIE 3
+    station1 = Station(1, "Bytom", ambulance1, driver1, employee1)
+    station2 = Station(2, "Chorzów", ambulance2, driver2, employee2)
+    station1.check_location(ambulance1.location)
 
 
 if __name__ == "__main__":
